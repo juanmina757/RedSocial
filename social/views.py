@@ -67,3 +67,18 @@ def unfollow(request, username):
 	rel.delete()
 	messages.success(request, f'Ya no sigues a {username}')
 	return redirect('feed')
+
+@login_required
+def EditarPost(request):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+            messages.success(request, 'Post enviado')
+            return redirect('feed')
+    else:
+        form = PostForm()
+    return render(request, 'social/post.html', {'form' : form})

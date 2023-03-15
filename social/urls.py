@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='social/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='social/logout.html'), name='logout'),
     path('post/', views.post, name='post'),
+    path('EditarPost/', views.post, name='EditarPost'),
 	path('follow/<str:username>/', views.follow, name='follow'),
 	path('unfollow/<str:username>/', views.unfollow, name='unfollow'),
 

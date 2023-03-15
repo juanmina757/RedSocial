@@ -11,8 +11,13 @@
             <i class="clock"></i>
             <time data-time="#">{{ post.timestamp|naturaltime }}</time>
             <div class="post">{{ post.content }}</div>
+            <hr>
+            <td>
+                <a class="btn btn-primary btn-sm" href="{% url 'EditarPost' %}">Editar</a>
+            </td>
         </div>
     </div>
+
 </article>
 
 {% endfor %}
