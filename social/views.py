@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def index(request):
+    return render(request, 'social/index.html')
+
 def feed(request):
     posts = Post.objects.all()
     context = { 'posts': posts}
@@ -18,7 +21,7 @@ def register(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado')
-            return redirect('feed')
+            return redirect('index')
     else:
         form = UserRegisterForm()
 
